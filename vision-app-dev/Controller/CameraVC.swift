@@ -11,6 +11,11 @@ import AVFoundation
 import CoreML
 import Vision
 
+enum FlashState {
+    case off
+    case on
+}
+
 class CameraVC: UIViewController {
 
     // Variables
@@ -19,6 +24,8 @@ class CameraVC: UIViewController {
     var previewLayer: AVCaptureVideoPreviewLayer!
     
     var photoData: Data?
+    
+    var flashControlState: FlashState = .off
     
     // Outlets
     @IBOutlet weak var cameraView: UIView!
@@ -86,6 +93,12 @@ class CameraVC: UIViewController {
         
         settings.previewPhotoFormat = previewFormat
         
+        if flashControlState == .off {
+            settings.flashMode = .off
+        } else {
+            settings.flashMode = .on
+        }
+        
         cameraOutput.capturePhoto(with: settings, delegate: self)
     }
     func resultsMethod(request: VNRequest, error: Error?) {
@@ -95,14 +108,28 @@ class CameraVC: UIViewController {
         for classification in results {
             if classification.confidence < 0.5 {
                 self.identificationLb.text = "Nemam pojma sta je to, probaj ponovo"
-                self.confidenceLbl.text = ""
+                self.confidenceLbl.text = "Mozda je: \(classification.identifier), (\(classification.confidence)%)"
+                break
             } else {
                 self.identificationLb.text = classification.identifier
                 self.confidenceLbl.text = "CONFIDENCE: \(classification.confidence * 100)%"
+                break
             }
         }
         
     }
+    
+    @IBAction func flashBtnWasPressed(_ sender: Any) {
+        switch flashControlState {
+        case .off:
+            flashBtn.setTitle("FLASH ON", for: .normal)
+            flashControlState = .on
+        case .on:
+            flashBtn.setTitle("FLASH OFF", for: .normal)
+            flashControlState = .off
+        }
+    }
+    
 }
 
 extension CameraVC: AVCapturePhotoCaptureDelegate {
