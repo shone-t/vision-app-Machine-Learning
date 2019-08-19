@@ -66,13 +66,17 @@
                                     <action selector="flashBtnWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5UK-QG-IVT"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fc2-hA-PUU" customClass="RoundedShadowImageView" customModule="vision_app_dev" customModuleProvider="target">
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fc2-hA-PUU" customClass="RoundedShadowImageView" customModule="vision_app_dev" customModuleProvider="target">
                                 <rect key="frame" x="280" y="630" width="75" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="eaI-1d-khh"/>
                                     <constraint firstAttribute="width" constant="75" id="fGf-sY-5kd"/>
                                 </constraints>
                             </imageView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="vtK-lP-CDU">
+                                <rect key="frame" x="307.66666666666669" y="684" width="20" height="20"/>
+                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -81,8 +85,10 @@
                             <constraint firstItem="RI2-Qf-gnc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="8jx-Hq-S7r"/>
                             <constraint firstItem="RI2-Qf-gnc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="A5d-RR-dw0"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="NIQ-2Z-05w" secondAttribute="bottom" constant="20" id="Vxd-1M-LNI"/>
+                            <constraint firstItem="vtK-lP-CDU" firstAttribute="centerY" secondItem="fc2-hA-PUU" secondAttribute="centerY" id="YTo-qX-zqP"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fc2-hA-PUU" secondAttribute="trailing" constant="20" id="byk-N0-9kj"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="mGa-1G-Pf0" secondAttribute="bottom" id="fbv-ks-sFp"/>
+                            <constraint firstItem="vtK-lP-CDU" firstAttribute="centerX" secondItem="fc2-hA-PUU" secondAttribute="centerX" id="gD6-E9-oyd"/>
                             <constraint firstItem="mGa-1G-Pf0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="hKf-80-KwF"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mGa-1G-Pf0" secondAttribute="trailing" id="pWU-s0-yHY"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="RI2-Qf-gnc" secondAttribute="trailing" constant="20" id="viO-CL-Nno"/>
@@ -97,6 +103,7 @@
                         <outlet property="flashBtn" destination="NIQ-2Z-05w" id="RE4-yj-G4t"/>
                         <outlet property="identificationLb" destination="8u2-9f-S4k" id="nxl-fM-7Ra"/>
                         <outlet property="roundedLblView" destination="RI2-Qf-gnc" id="tbZ-FV-fDW"/>
+                        <outlet property="spinner" destination="vtK-lP-CDU" id="gV7-zK-jAf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
